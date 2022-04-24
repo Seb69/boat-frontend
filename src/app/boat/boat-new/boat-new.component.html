@@ -1,0 +1,25 @@
+<form (ngSubmit)="onSave()" [formGroup]="boatForm">
+  <h1 mat-dialog-title>Edit Boat details</h1>
+  <div mat-dialog-content>
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input formControlName="name" matInput>
+      <mat-error *ngIf="boatForm.get('name')?.hasError('required')">Name is <strong>required</strong></mat-error>
+      <mat-error *ngIf="boatForm.get('name')?.hasError('minLength')">Name is <strong>required</strong></mat-error>
+
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea cdkTextareaAutosize formControlName="description" matInput></textarea>
+      <mat-error *ngIf="boatForm.get('description')?.hasError('required')">Description is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="boatForm.get('description')?.hasError('minLength')">Description is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button cdkFocusInitial mat-button type="submit">Save</button>
+  </div>
+</form>
+
